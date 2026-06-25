@@ -1,7 +1,8 @@
 import { useState } from "react";
 import apiClient from "../api/client";
 
-export default function ReceiptUpload() {
+export default function ReceiptUpload({ onUploaded }) {
+  // onUploaded as a prop to notify the parent(OCR)
   const [files, setFiles] = useState([]); // files the user picked
   const [status, setStatus] = useState(""); // status message
   const [uploadedFiles, setUploadedFiles] = useState([]); // the uploaded receipt_file_id and file_path are here
@@ -22,6 +23,8 @@ export default function ReceiptUpload() {
       setFiles([]); // clear the picker after success
 
       setUploadedFiles(res.data.files);
+
+      if (onUploaded) onUploaded(res.data.files); //handover to parent to carry out OCR
     } catch (err) {
       setStatus(
         "Upload failed: " + (err.response?.data?.message || err.message)
