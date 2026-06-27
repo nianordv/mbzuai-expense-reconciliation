@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { extractReceiptData } = require("../controllers/ocrController");
+const { extractReceipt } = require("../controllers/ocrController");
 
 // POST /api/ocr/extract
-router.post("/extract", extractReceiptData);
+router.post("/extract", extractReceipt);
 
 module.exports = router;
