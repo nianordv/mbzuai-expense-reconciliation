@@ -74,7 +74,14 @@ CREATE TABLE budgets (
     budget_id      SERIAL PRIMARY KEY,
     year           INTEGER       NOT NULL,
     planned_amount NUMERIC(12,2) NOT NULL,
-    actual_amount  NUMERIC(12,2) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE monthly_budgets (
+    monthly_budget_id SERIAL PRIMARY KEY,
+    year              INTEGER NOT NULL,
+    month             INTEGER NOT NULL,
+    planned_amount    NUMERIC(12,2) NOT NULL,
+    UNIQUE (year, month)
 );
 
 CREATE TABLE refunds (
