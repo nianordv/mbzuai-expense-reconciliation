@@ -12,6 +12,7 @@ const flagRoutes = require("./routes/flagRoutes");
 const budgetItemRoutes = require("./routes/budgetItemRoutes");
 const spreadsheetRoutes = require("./routes/spreadsheetRoutes");
 const packageRoutes = require("./routes/packageRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 app.use(cors({ origin: "http://localhost:5173", exposedHeaders: ["Content-Disposition"] }));
 app.use(express.json());
@@ -24,5 +25,6 @@ app.use("/api/flags", flagRoutes);
 app.use("/api/budget-items", budgetItemRoutes);
 app.use("/api/spreadsheets", spreadsheetRoutes);
 app.use("/api/packages", packageRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 module.exports = app;
